@@ -10,3 +10,4 @@ rootkey.csv
 mturk/
 qualtrics/
 results/
+*.png
