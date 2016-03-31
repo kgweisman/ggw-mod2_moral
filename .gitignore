@@ -1,0 +1,12 @@
+auth.json
+mturk-and-gmail.txt
+my-own-auth.json
+*_raw.*
+.RData
+.Rhistory
+stim development/
+results/
+rootkey.csv
+mturk/
+qualtrics/
+results/
