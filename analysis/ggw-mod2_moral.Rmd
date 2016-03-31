@@ -1401,7 +1401,7 @@ ggplot(aes(x = MR1, y = concern_general, fill = condition), data = d_moral_merge
   geom_point(shape = 21, colour = "black", 
              alpha = 0.5, size = 3, stroke = 1) +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Physiological Experience vs. General Moral Concern: RAW SCORES\n",
        x = "\nMR1 factor score (physiological)",
        y = "General moral concern\n")
@@ -1414,7 +1414,7 @@ ggplot(aes(x = MR2, y = concern_general, fill = condition), data = d_moral_merge
   geom_point(shape = 21, colour = "black", 
              alpha = 0.5, size = 3, stroke = 1) +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Social-emotional Experience vs. General Moral Concern: RAW SCORES\n",
        x = "\nMR2 factor score (social-emotional)",
        y = "General moral concern\n")
@@ -1427,7 +1427,7 @@ ggplot(aes(x = MR3, y = concern_general, fill = condition), data = d_moral_merge
   geom_point(shape = 21, colour = "black", 
              alpha = 0.5, size = 3, stroke = 1) +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Perceptual-cognitive Experience vs. General Moral Concern: RAW SCORES\n",
        x = "\nMR3 factor score (perceptual-cognitive)",
        y = "General moral concern\n")
@@ -1442,7 +1442,7 @@ ggplot(aes(x = rank(MR1), y = rank(concern_general),
   geom_point(shape = 21, colour = "black", 
              alpha = 0.5, size = 3, stroke = 1) +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Physiological Experience vs. General Moral Concern: RANKS\n",
        x = "\nMR1 factor score ranking (physiological)",
        y = "General moral concern ranking\n")
@@ -1456,7 +1456,7 @@ ggplot(aes(x = rank(MR2), y = rank(concern_general),
   geom_point(shape = 21, colour = "black", 
              alpha = 0.5, size = 3, stroke = 1) +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Social-emotional Experience vs. General Moral Concern: RANKS\n",
        x = "\nMR2 factor score ranking (social-emotional)",
        y = "General moral concern ranking\n")
@@ -1470,7 +1470,7 @@ ggplot(aes(x = rank(MR3), y = rank(concern_general),
   geom_point(shape = 21, colour = "black", 
              alpha = 0.5, size = 3, stroke = 1) +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Perceptual-cognitive Experience vs. General Moral Concern: RANKS\n",
        x = "\nMR3 factor score ranking (perceptual-cognitive)",
        y = "General moral concern ranking\n")
@@ -1558,12 +1558,12 @@ ggplot(aes(x = MR2, y = concern_general,
               ) +
   geom_point(colour = "black", alpha = 0.5, size = 5, stroke = 1) +
   scale_shape_manual(values = c(21, 23), name = "Condition") +
-  # scale_fill_continuous(low = "blue", high = "red",
-                    # name = "MR1 (physiological)") +
-  # scale_colour_manual(values = c("blue", "red"),
-                    # name = "MR1 (physiological)") +
+  scale_fill_manual(values = c("blue", "red"),
+                    name = "MR1 (physiological)") +
+  scale_colour_manual(values = c("blue", "red"),
+                    name = "MR1 (physiological)") +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Interaction: MR1 * MR2\n",
        x = "\nMR2 (social-emotional)",
        y = "General moral concern\n")
@@ -1577,12 +1577,12 @@ ggplot(aes(x = MR2, y = concern_general,
               aes(colour = condition)
               ) +
   geom_point(colour = "black", alpha = 0.5, size = 5, stroke = 1, shape = 21) +
-  scale_fill_manual(values = c("blue", "red"),
-                    name = "Condition") +
-  scale_colour_manual(values = c("blue", "red"),
-                    name = "Condition") +
+#   scale_fill_manual(values = c("blue", "red"),
+#                     name = "Condition") +
+#   scale_colour_manual(values = c("blue", "red"),
+#                     name = "Condition") +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Interaction: MR2 * Condition\n",
        x = "\nMR2 (social-emotional)",
        y = "General moral concern\n")
@@ -1594,7 +1594,7 @@ ggplot(aes(x = MR2, y = concern_general,
 #              alpha = 0.5, size = 5, stroke = 1) +
 #   # scale_fill_continuous(low = "blue", high = "red") +
 #   theme_bw() +
-#   theme(text = element_text(size = 20)) +
+#   theme(text = element_text(size = 30)) +
 #   labs(title = "Interactions\n",
 #        x = "\nMR1 (physiological)",
 #        y = "General moral concern\n")
@@ -1644,7 +1644,7 @@ ggplot(aes(x = rank(MR2), y = concern_general,
   scale_colour_manual(values = c("blue", "red"),
                     name = "MR1 (physiological)") +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Interaction\n",
        x = "\nMR2 (social-emotional)",
        y = "General moral concern\n")
@@ -1694,7 +1694,7 @@ ggplot(aes(x = log(MR2 + 10), y = concern_general,
   scale_colour_manual(values = c("blue", "red"),
                     name = "MR1 (physiological)") +
   theme_bw() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   labs(title = "Interaction\n",
        x = "\nMR2 (social-emotional)",
        y = "General moral concern\n")
