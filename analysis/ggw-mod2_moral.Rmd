@@ -1391,10 +1391,9 @@ ggplot(aes(x = interaction(condition, religion_cat2), y = concern_general,
        y = "General moral concern\n")
 ```
 
-
 ## Plots with general moral concern
 
-```{r plots general, message = F, echo = F, fig.width = 16, fig.height = 13}
+```{r plots general raw, message = F, echo = F, fig.width = 16, fig.height = 13}
 # raw scores
 ggplot(aes(x = MR1, y = concern_general, fill = condition), data = d_moral_merged) +
   geom_smooth(method = "lm", alpha = 0.1, aes(colour = condition)) +
@@ -1434,7 +1433,45 @@ ggplot(aes(x = MR3, y = concern_general, fill = condition), data = d_moral_merge
 #   annotate("text", x = 0, y = d_moral_merged_n, size = 5, hjust = 0.5,
 #        label = paste0("Pearson's r = ", round(rp_MR3.gen$estimate, 2),
 #                       ", p = ", round(rp_MR3.gen$p.value, 3)))
+```
 
+```{r plots general raw all, message = F, echo = F, fig.width = 16, fig.height = 13}
+d_moral_merged_long <- d_moral_merged %>%
+  gather(factor, score, MR1:MR3) %>%
+  mutate(factor = factor(factor, labels = c("Physio", "Soc-Emo", "Per-Cog")))
+
+ggplot(aes(x = score, y = concern_general, fill = condition), data = d_moral_merged_long) +
+  facet_grid(~ factor) +
+  geom_smooth(method = "lm", alpha = 0.1, aes(colour = condition)) +
+  geom_point(shape = 21, colour = "black", 
+             alpha = 0.5, size = 3, stroke = 1) +
+  theme_bw() +
+  theme(text = element_text(size = 30),
+        legend.position = "bottom") +
+  labs(x = "\nFactor score\n",
+       y = "General moral concern\n",
+       color = "Condition: ",
+       fill = "Condition: ")
+
+# histograms of factor scores by condition and factor
+ggplot(d_moral_merged, aes(x = MR1, fill = condition)) +
+  geom_histogram(data = subset(d_moral_merged, condition == "beetle"), alpha = 0.6) +
+  geom_histogram(data = subset(d_moral_merged, condition == "robot"), alpha = 0.6) +
+  xlim(-3, 5)
+
+ggplot(d_moral_merged, aes(x = MR2, fill = condition)) +
+  geom_histogram(data = subset(d_moral_merged, condition == "beetle"), alpha = 0.6) +
+  geom_histogram(data = subset(d_moral_merged, condition == "robot"), alpha = 0.6) +
+  xlim(-3, 5)
+
+ggplot(d_moral_merged, aes(x = MR3, fill = condition)) +
+  geom_histogram(data = subset(d_moral_merged, condition == "beetle"), alpha = 0.6) +
+  geom_histogram(data = subset(d_moral_merged, condition == "robot"), alpha = 0.6) +
+  xlim(-3, 5)
+```
+
+
+```{r plots general rank, message = F, echo = F, fig.width = 16, fig.height = 13}
 # ranks
 ggplot(aes(x = rank(MR1), y = rank(concern_general), 
            fill = condition, group = condition), data = d_moral_merged) +
@@ -1739,7 +1776,7 @@ summary(r6_spec_raw)
 ```{r plots specific, message = F, echo = F, fig.width = 16, fig.height = 5}
 # raw scores
 ggplot(aes(x = MR1, y = concern_score,
-           fill = condition, group = condition), data = d_moral_merged33) +
+           fill = condition, group = condition), data = d_moral_merged3) +
   geom_smooth(method = "lm", alpha = 0.1) +
   facet_grid(~ concern_type) +
   geom_point(shape = 21, colour = "black", 
@@ -1751,7 +1788,7 @@ ggplot(aes(x = MR1, y = concern_score,
        y = "How bad would you feel for the [target]?\n")
 
 ggplot(aes(x = MR2, y = concern_score,
-       fill = condition, group = condition), data = d_moral_merged33) +
+       fill = condition, group = condition), data = d_moral_merged3) +
   geom_smooth(method = "lm", alpha = 0.1) +
   facet_grid(~ concern_type) +
   geom_point(shape = 21, colour = "black", 
@@ -1763,7 +1800,7 @@ ggplot(aes(x = MR2, y = concern_score,
        y = "How bad would you feel for the [target]?\n")
 
 ggplot(aes(x = MR3, y = concern_score,
-       fill = condition, group = condition), data = d_moral_merged33) +
+       fill = condition, group = condition), data = d_moral_merged3) +
   geom_smooth(method = "lm", alpha = 0.1) +
   facet_grid(~ concern_type) +
   geom_point(shape = 21, colour = "black", 
@@ -1776,7 +1813,7 @@ ggplot(aes(x = MR3, y = concern_score,
 
 # ranks
 ggplot(aes(x = rank(MR1), y = concern_score,
-       fill = condition, group = condition), data = d_moral_merged33) +
+       fill = condition, group = condition), data = d_moral_merged3) +
   facet_grid(~ concern_type) +
   geom_smooth(method = "lm", alpha = 0.1) +
   geom_point(shape = 21, colour = "black", 
@@ -1788,7 +1825,7 @@ ggplot(aes(x = rank(MR1), y = concern_score,
        y = "How bad would you feel for the [target]?\n")
 
 ggplot(aes(x = rank(MR2), y = concern_score,
-       fill = condition, group = condition), data = d_moral_merged33) +
+       fill = condition, group = condition), data = d_moral_merged3) +
   facet_grid(~ concern_type) +
   geom_smooth(method = "lm", alpha = 0.1) +
   geom_point(shape = 21, colour = "black",  
@@ -1800,7 +1837,7 @@ ggplot(aes(x = rank(MR2), y = concern_score,
        y = "How bad would you feel for the [target]?\n")
 
 ggplot(aes(x = rank(MR3), y = concern_score,
-       fill = condition, group = condition), data = d_moral_merged33) +
+       fill = condition, group = condition), data = d_moral_merged3) +
   facet_grid(~ concern_type) +
   geom_smooth(method = "lm", alpha = 0.1) +
   geom_point(shape = 21, colour = "black", 
